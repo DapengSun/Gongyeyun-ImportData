@@ -1,1 +1,16 @@
 D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\ImportData.exe.config
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\ImportData.exe
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\ImportData.pdb
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.csprojResolveAssemblyReference.cache
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.Form1.resources
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.Properties.Resources.resources
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.csproj.GenerateResource.Cache
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.exe
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\obj\Debug\ImportData.pdb
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\MySql.Data.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\NPOI.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\NPOI.OOXML.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\NPOI.OpenXml4Net.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\WorkSpace\工业云数据导入\Gongyeyun-ImportData\ImportData\ImportData\bin\Debug\NPOI.xml
