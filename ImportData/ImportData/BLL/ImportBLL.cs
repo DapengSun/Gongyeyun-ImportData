@@ -87,7 +87,7 @@ namespace ImportData.BLL
         }
 
         /// <summary> 
-        /// 根据ID 获取电商ID
+        /// 根据ID 获取单项应用ID
         /// </summary>
         public string GetApplicationID(string Id)
         {

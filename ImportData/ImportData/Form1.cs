@@ -120,7 +120,7 @@ namespace ImportData
         /// </summary>
         private string EnterpriseAccountDataSQL(string LoginName, string EnterpriseName,int PlatCode = 47,string Password = "F379EAF3C831B04DE153469D1BEC345E",string ProviceName = "江苏省",string City= "常州市",string Town = "武进区")
         {
-            string SQL = "INSERT INTO  `accountinfoes`(`Id`,`OldCid`,`Role`,`Type`,`LoginName`,`Password`,`NickName`,`Phone`,`Name`,`Sex`,`Email`,`Bday`,`Province`,`City`,`Town`,`Address`, `PostCode`,`PlatCode`,`CDate`,`UpdateDate` ,`Perfinish`,`DeviceFlag`,`LastLoginDate`,`Editnum`,`SysStatus`,`Like`,`Coins`,`LoginNum`,`AllLoginNum`,`AllLastLoginDate`)";
+            string SQL = "INSERT INTO `gyy_account`.`accountinfoes`(`Id`,`OldCid`,`Role`,`Type`,`LoginName`,`Password`,`NickName`,`Phone`,`Name`,`Sex`,`Email`,`Bday`,`Province`,`City`,`Town`,`Address`, `PostCode`,`PlatCode`,`CDate`,`UpdateDate` ,`Perfinish`,`DeviceFlag`,`LastLoginDate`,`Editnum`,`SysStatus`,`Like`,`Coins`,`LoginNum`,`AllLoginNum`,`AllLastLoginDate`)";
                    SQL += " VALUES(REPLACE(UUID() , '-', ''),0,0,0,'{0}','{1}','{2}','','{2}',1,'','','{3}','{4}','{5}','','',{6},NOW(),NOW(),0,0,NOW(),0,0,0,0,0,0,NOW());";
 
             return string.Format(SQL, new object[] { LoginName, Password, EnterpriseName,ProviceName, City, Town, PlatCode });
@@ -133,32 +133,40 @@ namespace ImportData
         /// <param name="e"></param>
         private void EnterpriseData_Click(object sender, EventArgs e)
         {
-            int Platform = 3;
-            int PlatCode = 47;
-            int IndustryTypeIndex = 5;
-            int EnterpriseNameIndex = 1;
-            string ImgPath = @"http://deyang.gongyeyun.com/CloudFile/Resouce/2014/1-16//gongfang1.png";
-            string ProviceName = "江苏省";
-            string City = "常州市";
-            string Town = "武进区";
+            try
+            {
+                int Platform = 3;
+                int PlatCode = 47;
+                int IndustryTypeIndex = 5;
+                int EnterpriseNameIndex = 1;
+                string ImgPath = @"http://deyang.gongyeyun.com/CloudFile/Resouce/2014/1-16//gongfang1.png";
+                string ProviceName = "江苏省";
+                string City = "常州市";
+                string Town = "武进区";
 
-            string IndustryID = string.Empty;
-            string IndustryRootID = string.Empty;
-            string EnterpriseAccountID = string.Empty;
-            string EnterpriseName = string.Empty;
-            string SQL = string.Empty;
+                string IndustryID = string.Empty;
+                string IndustryRootID = string.Empty;
+                string EnterpriseAccountID = string.Empty;
+                string EnterpriseName = string.Empty;
+                string SQL = string.Empty;
 
-            ClearSQLTextBox();
-            foreach (DataRow item in ImportDt.Rows) {
-                //根据行业分类名称 通过IndustryAssociated表 查找行业分类ID及根ID
-                GetImportDataType(item[IndustryTypeIndex].ToString(), out IndustryID, out IndustryRootID);
+                ClearSQLTextBox();
+                foreach (DataRow item in ImportDt.Rows)
+                {
+                    //根据行业分类名称 通过IndustryAssociated表 查找行业分类ID及根ID
+                    GetImportDataType(item[IndustryTypeIndex].ToString(), out IndustryID, out IndustryRootID);
 
-                EnterpriseName = item[EnterpriseNameIndex].ToString();
-                //根据企业名称 获取企业账号ID
-                EnterpriseAccountID = _bll.GetEnterpriseAccountID(EnterpriseName);
+                    EnterpriseName = item[EnterpriseNameIndex].ToString();
+                    //根据企业名称 获取企业账号ID
+                    EnterpriseAccountID = _bll.GetEnterpriseAccountID(EnterpriseName);
 
-                SQL = EnterpriseDataSQL(EnterpriseAccountID, EnterpriseName.Trim(), ProviceName, City, Town, IndustryRootID, string.IsNullOrEmpty(IndustryID) == true ? 0 : int.Parse(IndustryID), Platform, PlatCode, ImgPath);
-                WriteSQL(SQL);
+                    SQL = EnterpriseDataSQL(EnterpriseAccountID, EnterpriseName.Trim(), ProviceName, City, Town, IndustryRootID, string.IsNullOrEmpty(IndustryID) == true ? 0 : int.Parse(IndustryID), Platform, PlatCode, ImgPath);
+                    WriteSQL(SQL);
+                }
+            }
+            catch (Exception ee)
+            {
+                throw ee;
             }
         }
 
@@ -166,9 +174,9 @@ namespace ImportData
         /// 生成企业数据SQL
         /// </summary>
         private string EnterpriseDataSQL(string EnterpriseAccountID, string EnterpriseName, string ProviceName, string City, string Town, string IndustryRootID, int IndustryID, int Platform, int PlatCode,string ImgPath) {
-            string SQL = "INSERT INTO `companyinfoes`(`Id`,`OldSid`,`Cid`,`RzType`,`RzCheck`,`Name`,`Province`,`City`,`Town`,`Address`,`Lng`,`Lat`,";
+            string SQL = "INSERT INTO `gyy_company`.`companyinfoes`(`Id`,`OldSid`,`Cid`,`RzType`,`RzCheck`,`Name`,`Province`,`City`,`Town`,`Address`,`Lng`,`Lat`,";
                    SQL+= "`Industry`,`IndustryId`,`IndustryRoot`,`UpdateDate`,`PlatCode`,`CDate`,`SysStatus`,`ScaleType`,`Platform`,`imgpath`,Probar,`MainBusiness`,`CasesNum`,`CollsNum`,`ViewNum`,`LiuyanNum`,`PhotoNum`,`DynamicNum`,`PjNum`,`Sdid`,`ScaleNum`,`TurnOver`,`ScaleSite`,`EmailFlag`,`PhoneFlag`,`IdenFlag`)";
-                   SQL+= " VALUES(REPLACE(UUID() , '-', ''),0,'{0}',0,0,'{1}','{2}','{3}','{4}','','','','{5}',{6},'0',NOW(),{7},NOW(),0,0,{8},'{9}',0,'',0,0,0,0,0,0,0,0,0,0,0,0,0,0);";
+                   SQL+= " VALUES(REPLACE(UUID() , '-', ''),0,'{0}',0,0,'{1}','{2}','{3}','{4}','','','','{5}',{6},'{5}',NOW(),{7},NOW(),0,0,{8},'{9}',0,'',0,0,0,0,0,0,0,0,0,0,0,0,0,0);";
 
             SQL  = string.Format(SQL, new object[] { EnterpriseAccountID, EnterpriseName, ProviceName, City, Town, IndustryRootID, IndustryID , PlatCode , Platform , ImgPath });
             return SQL;
@@ -255,7 +263,7 @@ namespace ImportData
         /// </summary>
         private string SoftwareSQL(string EnterpriseID,string SoftwareID)
         {
-            string SQL = "INSERT INTO `companysoftres`(`Id`,`Sid`,`SoftwareId`,`CDate`,`SysStatus`,`Memo`)VALUES(REPLACE(UUID() , '-', ''),'{0}','{1}',NOW(),0,'');";
+            string SQL = "INSERT INTO `gyy_changzhou`.`companysoftres`(`Id`,`Sid`,`SoftwareId`,`CDate`,`SysStatus`,`Memo`)VALUES(REPLACE(UUID() , '-', ''),'{0}','{1}',NOW(),0,'');";
             SQL = string.Format(SQL, new object[] { EnterpriseID, SoftwareID });
             return SQL;
         }
@@ -301,7 +309,7 @@ namespace ImportData
         /// </summary>
         private string TurnOverSQL(string EnterpriseName,float TurnOver)
         {
-            string SQL = "Update `companyinfoes` Set TurnOver = {0} where Name = '{1}';";
+            string SQL = "Update `gyy_company`.`companyinfoes` Set TurnOver = {0} where Name = '{1}';";
             SQL = string.Format(SQL, new object[] { TurnOver, EnterpriseName });
             return SQL;
         }
@@ -338,6 +346,7 @@ namespace ImportData
             return _bll.GetPlatApplyID(Id);
         }
 
+        /// <summary>
         /// 生成平台应用SQL
         /// </summary>
         private string PlatApplySQL(string EnterpriseID, string PlatApplyID)
@@ -372,7 +381,7 @@ namespace ImportData
             }
         }
 
-
+        /// <summary>
         /// 获取电商主键ID
         /// </summary>
         private string GetBusinessID(string Id)
@@ -414,6 +423,7 @@ namespace ImportData
             }
         }
 
+        /// <summary>
         /// 获取单项应用主键ID
         /// </summary>
         private string GetApplicationID(string Id)
@@ -421,6 +431,7 @@ namespace ImportData
             return _bll.GetApplicationID(Id);
         }
 
+        /// <summary>
         /// 生成单项应用SQL
         /// </summary>
         private string ApplicationSQL(string EnterpriseID, string AppId)
