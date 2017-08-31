@@ -70,6 +70,7 @@
     <Compile Include="Common\DbHelperMySQL.cs" />
     <Compile Include="Common\ExcelHelper.cs" />
     <Compile Include="DAL\ImportDAL.cs" />
+    <Compile Include="EnumType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

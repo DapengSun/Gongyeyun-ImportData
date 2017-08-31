@@ -35,13 +35,13 @@
             this.EnterpriseAccountData = new System.Windows.Forms.Button();
             this.EnterpriseSoftware = new System.Windows.Forms.Button();
             this.EnterpriseTurnOver = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.EnterpriseItem = new System.Windows.Forms.Button();
+            this.EnterpriseBusiness = new System.Windows.Forms.Button();
             this.PlatApply = new System.Windows.Forms.Button();
             this.ImportIndustryType = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -53,8 +53,10 @@
             this.ShowSQL.Location = new System.Drawing.Point(0, 0);
             this.ShowSQL.Multiline = true;
             this.ShowSQL.Name = "ShowSQL";
+            this.ShowSQL.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ShowSQL.Size = new System.Drawing.Size(609, 440);
             this.ShowSQL.TabIndex = 0;
+            this.ShowSQL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStatus_KeyDown);
             // 
             // groupBox1
             // 
@@ -76,21 +78,23 @@
             // 
             // EnterpriseData
             // 
-            this.EnterpriseData.Location = new System.Drawing.Point(20, 559);
+            this.EnterpriseData.Location = new System.Drawing.Point(183, 559);
             this.EnterpriseData.Name = "EnterpriseData";
             this.EnterpriseData.Size = new System.Drawing.Size(97, 23);
             this.EnterpriseData.TabIndex = 2;
             this.EnterpriseData.Text = "企业数据";
             this.EnterpriseData.UseVisualStyleBackColor = true;
+            this.EnterpriseData.Click += new System.EventHandler(this.EnterpriseData_Click);
             // 
             // EnterpriseAccountData
             // 
-            this.EnterpriseAccountData.Location = new System.Drawing.Point(183, 559);
+            this.EnterpriseAccountData.Location = new System.Drawing.Point(20, 559);
             this.EnterpriseAccountData.Name = "EnterpriseAccountData";
             this.EnterpriseAccountData.Size = new System.Drawing.Size(97, 23);
             this.EnterpriseAccountData.TabIndex = 3;
             this.EnterpriseAccountData.Text = "企业账户数据";
             this.EnterpriseAccountData.UseVisualStyleBackColor = true;
+            this.EnterpriseAccountData.Click += new System.EventHandler(this.EnterpriseAccountData_Click);
             // 
             // EnterpriseSoftware
             // 
@@ -100,6 +104,7 @@
             this.EnterpriseSoftware.TabIndex = 4;
             this.EnterpriseSoftware.Text = "企业软件应用";
             this.EnterpriseSoftware.UseVisualStyleBackColor = true;
+            this.EnterpriseSoftware.Click += new System.EventHandler(this.EnterpriseSoftware_Click);
             // 
             // EnterpriseTurnOver
             // 
@@ -109,24 +114,27 @@
             this.EnterpriseTurnOver.TabIndex = 5;
             this.EnterpriseTurnOver.Text = "企业营业额";
             this.EnterpriseTurnOver.UseVisualStyleBackColor = true;
+            this.EnterpriseTurnOver.Click += new System.EventHandler(this.EnterpriseTurnOver_Click);
             // 
-            // button4
+            // EnterpriseItem
             // 
-            this.button4.Location = new System.Drawing.Point(350, 588);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(97, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "单项应用使用";
-            this.button4.UseVisualStyleBackColor = true;
+            this.EnterpriseItem.Location = new System.Drawing.Point(350, 588);
+            this.EnterpriseItem.Name = "EnterpriseItem";
+            this.EnterpriseItem.Size = new System.Drawing.Size(97, 23);
+            this.EnterpriseItem.TabIndex = 8;
+            this.EnterpriseItem.Text = "单项应用使用";
+            this.EnterpriseItem.UseVisualStyleBackColor = true;
+            this.EnterpriseItem.Click += new System.EventHandler(this.EnterpriseItem_Click);
             // 
-            // button5
+            // EnterpriseBusiness
             // 
-            this.button5.Location = new System.Drawing.Point(183, 588);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(97, 23);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "工业电商使用";
-            this.button5.UseVisualStyleBackColor = true;
+            this.EnterpriseBusiness.Location = new System.Drawing.Point(183, 588);
+            this.EnterpriseBusiness.Name = "EnterpriseBusiness";
+            this.EnterpriseBusiness.Size = new System.Drawing.Size(97, 23);
+            this.EnterpriseBusiness.TabIndex = 7;
+            this.EnterpriseBusiness.Text = "工业电商使用";
+            this.EnterpriseBusiness.UseVisualStyleBackColor = true;
+            this.EnterpriseBusiness.Click += new System.EventHandler(this.EnterpriseBusiness_Click);
             // 
             // PlatApply
             // 
@@ -136,6 +144,7 @@
             this.PlatApply.TabIndex = 6;
             this.PlatApply.Text = "工业云平台应用";
             this.PlatApply.UseVisualStyleBackColor = true;
+            this.PlatApply.Click += new System.EventHandler(this.PlatApply_Click);
             // 
             // ImportIndustryType
             // 
@@ -158,10 +167,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "导入基础数据";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(7, 20);
@@ -172,14 +177,18 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.GetImportData);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 629);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.EnterpriseItem);
+            this.Controls.Add(this.EnterpriseBusiness);
             this.Controls.Add(this.PlatApply);
             this.Controls.Add(this.EnterpriseTurnOver);
             this.Controls.Add(this.EnterpriseSoftware);
@@ -206,8 +215,8 @@
         private System.Windows.Forms.Button EnterpriseAccountData;
         private System.Windows.Forms.Button EnterpriseSoftware;
         private System.Windows.Forms.Button EnterpriseTurnOver;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button EnterpriseItem;
+        private System.Windows.Forms.Button EnterpriseBusiness;
         private System.Windows.Forms.Button PlatApply;
         private System.Windows.Forms.Button ImportIndustryType;
         private System.Windows.Forms.GroupBox groupBox2;
