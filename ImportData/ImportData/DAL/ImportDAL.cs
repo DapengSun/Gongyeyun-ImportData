@@ -54,7 +54,7 @@ namespace ImportData.DAL
         public string GetEnterpriseAccountID(string EnterpriseName)
         {
             string EnterpriseID = string.Empty;
-            string SQL = "select * from accountinfoes where NickName like '%{0}%'";
+            string SQL = "select Id from accountinfoes where NickName like '%{0}%'";
             SQL = string.Format(SQL, EnterpriseName.Trim());
             return DbHelperMySQL.GetSingle(AccountConnection, SQL).ToString();
         }
@@ -68,7 +68,7 @@ namespace ImportData.DAL
         public string GetEnterpriseInfoID(string EnterpriseName)
         {
             string EnterpriseID = string.Empty;
-            string SQL = "select * from companyinfoes where Name = '{0}'";
+            string SQL = "select Id from companyinfoes where Name = '{0}' and platcode=47 and sysstatus = 0";
             SQL = string.Format(SQL, EnterpriseName.Trim());
             return DbHelperMySQL.GetSingle(CompanyConnection, SQL).ToString();
         }
